@@ -1,5 +1,7 @@
 #pragma region region1
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 
 #define ff first
@@ -35,8 +37,8 @@ using namespace std;
     int x;    \
     cin >> x; \
     while (x--)
-// mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-// typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 string getString(char x)
 {
     string s(1, x);
