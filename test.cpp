@@ -1,7 +1,7 @@
 #pragma region region1
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
+// #include <ext/pb_ds/assoc_container.hpp>
+// using namespace __gnu_pbds;
 using namespace std;
 
 #define ff first
@@ -12,7 +12,10 @@ using namespace std;
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
+#define pic pair<int, char>
+#define pci pair<char, int>
 #define vi vector<int>
+#define vc vector<char>
 #define li list<int>
 #define vvi vector<vector<int>>
 #define mii map<int, int>
@@ -20,6 +23,8 @@ using namespace std;
 #define pqs priority_queue<int, vi, greater<int>>
 #define fl(n) for (int i = 0; i < n; i++)
 #define flj(n) for (int j = 0; j < n; j++)
+#define upper(s1) transform(s1.begin(), s1.end(), s1.begin(), ::toupper)
+#define lower(s1) transform(s1.begin(), s1.end(), s1.begin(), ::tolower)
 #define setbits(x) __builtin_popcountll(x)
 #define zrobits(x) __builtin_ctzll(x)
 #define mod 1000000000
@@ -64,53 +69,16 @@ vi fib(int kk)
 
     return v;
 }
-
 #pragma endregion region1;
 void solve()
 {
-    int n, a, b;
-    cin >> n >> a >> b;
-    int n1 = 0, n2 = 0;
-    vi v(n);
-    int common = 0;
-    fl(n)
-    {
-        cin >> v[i];
-    }
-    if (__gcd(a, b) == 1)
-    {
-        fl(n)
-        {
-            if (v[i] % b == 0)
-            {
-                cout << "ALICE" << endl;
-                break;
-            }
-        }
-    }
-    else
-    {
-        fl(n)
-        {
-            if (v[i] % b == 0)
-            {
-                cout << "ALICE" << endl;
-                break;
-            }
-            else
-            {
-                cout << "BOB" << endl;
-                break;
-            }
-        }
-    }
 }
 #pragma region region2
 signed main()
 {
-    // sectumsempra07();
+    sectumsempra07();
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;
