@@ -1,7 +1,7 @@
 #pragma region region1
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
+// #include <ext/pb_ds/assoc_container.hpp>
+// using namespace __gnu_pbds;
 using namespace std;
 
 #define ff first
@@ -12,7 +12,10 @@ using namespace std;
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
+#define pic pair<int, char>
+#define pci pair<char, int>
 #define vi vector<int>
+#define vc vector<char>
 #define li list<int>
 #define vvi vector<vector<int>>
 #define mii map<int, int>
@@ -20,7 +23,8 @@ using namespace std;
 #define pqs priority_queue<int, vi, greater<int>>
 #define fl(n) for (int i = 0; i < n; i++)
 #define flj(n) for (int j = 0; j < n; j++)
-#define all(x) x.begin(), x.end()
+#define upper(s1) transform(s1.begin(), s1.end(), s1.begin(), ::toupper)
+#define lower(s1) transform(s1.begin(), s1.end(), s1.begin(), ::tolower)
 #define setbits(x) __builtin_popcountll(x)
 #define zrobits(x) __builtin_ctzll(x)
 #define mod 1000000000
@@ -34,7 +38,7 @@ using namespace std;
     cin >> x; \
     while (x--)
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
+// typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 string getString(char x)
 {
     string s(1, x);
@@ -68,32 +72,23 @@ vi fib(int kk)
 #pragma endregion region1;
 void solve()
 {
-    vvi v(5, vi(5));
-    int a = -1, b = -1;
-    fl(5) flj(5)
-    {
-        cin >>
-            v[i][j];
-        if (v[i][j] == 1)
-        {
-            a = i;
-            b = j;
-            return;
-            cout <<
-        }
-        if (a != -1)
-            return;
-    }
-    cout << abs(2 - a) + abs(2 - b) << endl;
+    int a, b;
+    cin >> a >> b;
+    // cout << a + b << endl;
+    if (a + b > 6)
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
 }
+
 #pragma region region2
 signed main()
 {
     sectumsempra07();
     int t = 1;
-    // cin >> t;
-    // while (t--)
-    solve();
+    cin >> t;
+    while (t--)
+        solve();
     return 0;
 }
 #pragma endregion region2
