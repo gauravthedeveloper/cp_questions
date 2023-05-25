@@ -33,10 +33,11 @@ using namespace std;
 #define minf -1e9
 #define ps(x, y) fixed << setprecision(y) << x
 #define mk(arr, n, type) type *arr = new type[n];
-#define w(x)  \
-    int x;    \
-    cin >> x; \
-    while (x--)
+#define w(x)                                                           \
+    int i_am_naming_this_badly_so_that_i_dont_use_it_accidentally = 1; \
+    cin >> i_am_naming_this_badly_so_that_i_dont_use_it_accidentally;  \
+    i_am_naming_this_badly_so_that_i_dont_use_it_accidentally--;       \
+    while (i_am_naming_this_badly_so_that_i_dont_use_it_accidentally--)
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 // typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 string getString(char x)
@@ -70,57 +71,38 @@ vi fib(int kk)
     return v;
 }
 #pragma endregion region1;
-bool checklucky(int n)
-{
-    if (n == 1)
-        return false;
-    string v = to_string(n);
-    bool flag = true;
-    fl(v.length())
-    {
-        if (v[i] != '4' && v[i] != '7')
-        {
-            flag = false;
-        }
-    }
-    if (flag)
-        return true;
-
-    while (n % 2 == 0)
-    {
-        v = to_string(n);
-        flag = true;
-        fl(v.length())
-        {
-            if (v[i] != '4' && v[i] != '7')
-            {
-                flag = false;
-            }
-        }
-        if (flag)
-            return true;
-        n /= 2;
-    }
-    return false;
-}
 void solve()
 {
     int n;
     cin >> n;
-    bool p = checklucky(n);
-    if (p)
+    int temporary = n;
+    bool flag = false;
+    int a;
+    while (temporary--)
+    {
+        a = temporary % 10;
+        if (a != 4 || a != 5)
+        {
+            flag = false;
+            break;
+        }
+    }
+    if (flag)
         cout << "YES" << endl;
     else
-        cout << "NO" << endl;
+    {
+        if (n % 4 == 0 || n % 7 == 0 || n % 47 == 0 || n % 74 == 0 || n % 44 == 0 || n % 447 == 0 || n % 77 == 0 || n % 477 == 0 || n % 447 == 0 || n % 474 == 0)
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
 }
 #pragma region region2
 signed main()
 {
     sectumsempra07();
-    int t = 1;
-    // cin >> t;
-    while (t--)
-        solve();
+    solve();
+    // w(x - 1) solve();
     return 0;
 }
 #pragma endregion region2
