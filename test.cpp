@@ -1,134 +1,100 @@
-#pragma region region1
-#include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
+// Online C++ compiler to run C++ program online
+#include <iostream>
 using namespace std;
-
-#define ff first
-#define ss second
-#define int long long
-#define double long double
-#define ll long long
-#define pb push_back
-#define mp make_pair
-#define pii pair<int, int>
-#define pic pair<int, char>
-#define pci pair<char, int>
-#define vi vector<int>
-#define vc vector<char>
-#define li list<int>
-#define vvi vector<vector<int>>
-#define vpii vector<pair<char, int>>
-#define mii map<int, int>
-#define pqb priority_queue<int>
-#define pqs priority_queue<int, vi, greater<int>>
-#define fl(n) for (int i = 0; i < n; i++)
-#define flj(n) for (int j = 0; j < n; j++)
-#define loop(n) for (long long i = 0; i < n; i++)
-#define rloop(n) for (long long i = n - 1; i >= 0; i--)
-#define upper(s1) transform(s1.begin(), s1.end(), s1.begin(), ::toupper)
-#define lower(s1) transform(s1.begin(), s1.end(), s1.begin(), ::tolower)
-#define setbits(x) __builtin_popcountll(x)
-#define zrobits(x) __builtin_ctzll(x)
-#define mod 1000000000
-#define MOD 1000000007
-#define inf 1e9
-#define minf -1e9
-#define ps(x, y) fixed << setprecision(y) << x
-#define mk(arr, n, type) type *arr = new type[n];
-#define w(x)  \
-    int x;    \
-    cin >> x; \
-    while (x--)
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
-string getString(char x)
+int main()
 {
-    string s(1, x);
-    return s;
-}
-int lcm(int x, int y)
-{
-    return (x * y) / __gcd(x, y);
-}
-void sectumsempra07()
-{
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    // #ifndef ONLINE_JUDGE
-    //     freopen("Files/input.txt", "r", stdin);
-    //     freopen("Files/output.txt", "w", stdout);
-    // #endif
-}
-vi fib(int kk)
-{
-    vi v(kk + 1);
-    v[0] = v[1] = 1;
-    for (int i = 2; i < kk + 1; i++)
-    {
-        v[i] = v[i - 1] + v[i - 2];
-    }
-
-    return v;
-}
-#pragma endregion region1;
-void solve()
-{
-    int n, q, x, y;
-    cin >> n >> q;
-
-    int v1[n];
-    loop(n) cin >> v1[i];
-
-    sort(v1, v1 + n);
-    int v2[n + 1];
-    loop(n + 1) v2[i] = 0;
-    while (q--)
-    {
-
-        cin >> x >> y;
-        v2[x - 1] += 1;
-        v2[y] -= 1;
-    }
-
-    loop(n + 1)
-    {
-        if (i)
-            v2[i] += v2[i - 1];
-    }
-
-    vpii v, vv;
-    loop(n)
-    {
-
-        v.pb({v2[i], i});
-    }
-    sort(v.rbegin(), v.rend());
-
-    ll pointer = n - 1, result = 0;
-    for (auto it : v)
-    {
-        result += (it.first * v1[pointer]);
-        vv.pb({it.second, v1[pointer--]});
-    }
-
-    cout << result << "\n";
-    sort(vv.begin(), vv.end());
-    for (auto it : vv)
-    {
-        cout << it.second << " ";
-    }
-    cout << "\n";
-}
-#pragma region region2
-signed main()
-{
-    sectumsempra07();
-    int t = 1;
+    int t;
     cin >> t;
     while (t--)
-        solve();
+    {
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+        int count = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] == '(')
+                count++;
+            else
+                count--;
+        }
+        if (count != 0)
+        {
+            cout << "-1" << endl;
+            continue;
+        }
+        int c = 0;
+        int zc = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] == '(')
+                zc++;
+            else
+                zc--;
+            if (zc < 0)
+
+            {
+                c++;
+                break;
+            }
+        }
+        zc = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] == ')')
+                zc++;
+            else
+                zc--;
+            if (zc < 0)
+
+            {
+                c++;
+                break;
+            }
+        }
+        if (c < 2)
+        {
+            cout << 1 << endl;
+            while (n--)
+                cout << 1 << ' ';
+            cout << endl;
+        }
+        else
+        {
+            int col[n];
+            int i = 0;
+            int j = n - 1;
+            while (i < j)
+            {
+                if (s[i] == ')' && s[j] == ')')
+                {
+                    col[i++] = 2;
+                    col[j--] = 1;
+                }
+                else if (s[i] == '(' && s[j] == '(')
+                {
+                    col[i++] = 1;
+                    col[j--] = 2;
+                }
+                else if (s[i] == ')' && s[j] == '(')
+                {
+                    col[j--] = 2;
+                    col[i++] = 2;
+                }
+                else
+                {
+                    col[i++] = 1;
+                    col[j--] = 1;
+                }
+            }
+            cout << "2" << endl;
+            for (int i = 0; i < n; i++)
+                cout << col[i] << " ";
+            cout << endl;
+        }
+    }
+
     return 0;
 }
-#pragma endregion region2
