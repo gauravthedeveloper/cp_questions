@@ -1,7 +1,7 @@
 #pragma region region1
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
+// #include <ext/pb_ds/assoc_container.hpp>
+// using namespace __gnu_pbds;
 using namespace std;
 
 #define ff first
@@ -18,14 +18,12 @@ using namespace std;
 #define vc vector<char>
 #define li list<int>
 #define vvi vector<vector<int>>
-#define vpii vector<pair<char, int>>
 #define mii map<int, int>
 #define pqb priority_queue<int>
 #define pqs priority_queue<int, vi, greater<int>>
 #define fl(n) for (int i = 0; i < n; i++)
 #define flj(n) for (int j = 0; j < n; j++)
-#define loop(n) for (long long i = 0; i < n; i++)
-#define rloop(n) for (long long i = n - 1; i >= 0; i--)
+#define fliback(n) for (int i = n - 1; i >= 0; i--)
 #define upper(s1) transform(s1.begin(), s1.end(), s1.begin(), ::toupper)
 #define lower(s1) transform(s1.begin(), s1.end(), s1.begin(), ::tolower)
 #define setbits(x) __builtin_popcountll(x)
@@ -41,7 +39,7 @@ using namespace std;
     cin >> x; \
     while (x--)
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
+// typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 string getString(char x)
 {
     string s(1, x);
@@ -75,51 +73,15 @@ vi fib(int kk)
 #pragma endregion region1;
 void solve()
 {
-    int n, q, x, y;
-    cin >> n >> q;
-
-    int v1[n];
-    loop(n) cin >> v1[i];
-
-    sort(v1, v1 + n);
-    int v2[n + 1];
-    loop(n + 1) v2[i] = 0;
-    while (q--)
+    int n;
+    cin >> n;
+    if (n % 2 == 1)
+        cout << -1 << endl;
+    else
     {
-
-        cin >> x >> y;
-        v2[x - 1] += 1;
-        v2[y] -= 1;
+        fliback(n) cout << i + 1 << " ";
+        cout << endl;
     }
-
-    loop(n + 1)
-    {
-        if (i)
-            v2[i] += v2[i - 1];
-    }
-
-    vpii v, vv;
-    loop(n)
-    {
-
-        v.pb({v2[i], i});
-    }
-    sort(v.rbegin(), v.rend());
-
-    ll pointer = n - 1, result = 0;
-    for (auto it : v)
-    {
-        result += (it.first * v1[pointer]);
-        vv.pb({it.second, v1[pointer--]});
-    }
-
-    cout << result << "\n";
-    sort(vv.begin(), vv.end());
-    for (auto it : vv)
-    {
-        cout << it.second << " ";
-    }
-    cout << "\n";
 }
 #pragma region region2
 signed main()
